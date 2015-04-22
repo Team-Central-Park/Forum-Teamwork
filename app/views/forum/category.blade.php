@@ -79,6 +79,9 @@
 
 @section('javascript')
     @parent
-    <script type="text/javascript" src="/js/app.js"></script>
+<script>
+    var mainURL = '<?= URL::to('/') ?>';
+</script>
+{{ HTML::script('js/app.js'); }}
 
 @stop

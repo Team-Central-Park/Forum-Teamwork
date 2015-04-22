@@ -58,7 +58,7 @@ class UserController extends BaseController {
             ), $remember);
             if($auth)
             {
-                return Redirect::intended('/');
+                return Redirect::route('forum-home');
             }
             else
             {

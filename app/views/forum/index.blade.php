@@ -123,7 +123,10 @@
 
 @section('javascript')
     @parent
-    <script type="text/javascript" src="/js/app.js"></script>
+<script>
+    var mainURL = '<?= URL::to('/') ?>';
+</script>
+{{ HTML::script('js/app.js'); }}
     @if(Session::has('modal'))
         <script type="text/javascript">
             $("{{ Session::get('modal') }}").modal('show');
@@ -136,4 +139,5 @@
             $("{{ Session::get('category-modal') }}").modal('show');
         </script>
     @endif
+
 @stop

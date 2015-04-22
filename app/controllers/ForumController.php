@@ -41,7 +41,7 @@ class ForumController extends BaseController
             $group->title = Input::get('group_name');
             $group->author_id = Auth::user()->id;
 
-            if($group -> save()) {
+            if($group->save()) {
                 return Redirect::Route('forum-home')->with('success', 'The group was created.');
             }
             else {
