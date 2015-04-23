@@ -4,7 +4,8 @@
     @section('head')
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="/css/style.css"/>
+    {{ HTML::style('css/hover.css'); }}
+    {{ HTML::style('css/style.css'); }}
     @show
 </head>
 <body>
@@ -20,15 +21,15 @@
             </div>
             <div class="navbar-collapse collapse navbar-responsive-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="{{ URL::route('home') }}">Home</a></li>
-                    <li><a href="{{ URL::route('forum-home') }}">Forums</a></li>
+                    <li><a href="{{ URL::route('home') }}" class="hvr-fade">Home</a></li>
+                    <li><a href="{{ URL::route('forum-home') }}" class="hvr-fade">Forums</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     @if(!Auth::check())
-                        <li><a href="{{ URL::route('getCreate') }}">Register</a></li>
-                        <li><a href="{{ URL::route('getLogin') }}">Login</a></li>
+                        <li><a href="{{ URL::route('getCreate') }}" class="hvr-fade">Register</a></li>
+                        <li><a href="{{ URL::route('getLogin') }}" class="hvr-fade">Login</a></li>
                     @else
-                        <li><a href="{{ URL::route('getLogout') }}">Logout</a></li>
+                        <li><a href="{{ URL::route('getLogout') }}" class="hvr-fade">Logout</a></li>
                     @endif
                 </ul>
             </div>
