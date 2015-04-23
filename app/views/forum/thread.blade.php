@@ -25,7 +25,7 @@
         <p>{{ nl2br(BBCode::parse($thread->body)) }}</p>
     </div>
 
-    @foreach($thread->comments()->get() as $comment)
+    @foreach($comments as $comment)
         <div class="well">
             <h4>By: {{ $comment->author->username }} on {{ $comment->created_at }}</h4>
             <hr/>
@@ -35,6 +35,8 @@
             @endif
         </div>
     @endforeach
+
+    {{ $comments->links(); }}
 
     @if(Auth::check())
         <form action="{{ URL::route('forum-store-comment', $thread->id) }}" method="post">

@@ -48,6 +48,7 @@
             @endforeach
         </div>
     </div>
+    {{ $threads->links(); }}
 </div>
 
 

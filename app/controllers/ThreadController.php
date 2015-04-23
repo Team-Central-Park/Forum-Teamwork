@@ -9,7 +9,8 @@ class ThreadController extends BaseController {
         }
 
         $author = $thread->author()->first()->username;
-        return View::make('forum.thread')->with('thread', $thread)->with('author', $author);
+        $comments = $thread->comments()->paginate(10);
+        return View::make('forum.thread')->with('thread', $thread)->with('author', $author)->with('comments', $comments);
     }
 
     public function create($id)

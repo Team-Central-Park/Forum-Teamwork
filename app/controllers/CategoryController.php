@@ -8,7 +8,7 @@ class CategoryController extends BaseController {
             return Redirect::Route('forum-home')->with('fail', "That category doesn't exist.");
         }
 
-        $threads = $category->threads()->get();
+        $threads = $category->threads()->paginate(20);
         return View::make('forum.category')->with('category', $category)->with('threads', $threads);
     }
 
