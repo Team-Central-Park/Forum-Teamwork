@@ -44,6 +44,7 @@
             @foreach($threads as $thread)
                 <a href="{{ URL::route('forum-thread', $thread -> id) }}" class="list-group-item">
                     {{ $thread->title }}
+                    <em class="pull-right">Visits: {{ $thread->visits_counter }}</em>
                 </a>
             @endforeach
         </div>

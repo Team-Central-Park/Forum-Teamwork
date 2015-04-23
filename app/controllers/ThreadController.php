@@ -10,6 +10,8 @@ class ThreadController extends BaseController {
 
         $author = $thread->author()->first()->username;
         $comments = $thread->comments()->paginate(10);
+        $thread->visits_counter++;
+        $thread->save();
         return View::make('forum.thread')->with('thread', $thread)->with('author', $author)->with('comments', $comments);
     }
 

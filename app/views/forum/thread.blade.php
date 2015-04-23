@@ -21,6 +21,7 @@
     <div class="well">
         <h1>{{ $thread->title }}</h1>
         <h4>By: {{ $author }} on {{ $thread->created_at }}</h4>
+        <h5><em>Visits: {{ $thread->visits_counter }}</em></h5>
         <hr/>
         <p>{{ nl2br(BBCode::parse($thread->body)) }}</p>
     </div>
@@ -42,14 +43,14 @@
         <form action="{{ URL::route('forum-store-comment', $thread->id) }}" method="post">
             <div class="form-group">
                 <label for="body">Body: </label>
-                <textarea class="form-control" name="body" id="body"/>
-                </textarea>
+                <textarea class="form-control" name="body" id="body"></textarea>
             </div>
             {{ Form::token() }}
             <div class="form-group">
                 <input type="submit" value="Save Thread" class="btn btn-primary"/>
             </div>
         </form>
+
     @endif
 
 @stop
