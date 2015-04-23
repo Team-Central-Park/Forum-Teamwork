@@ -17,10 +17,13 @@ class CreateForumThreadsTable extends Migration {
             $table->increments('id');
             $table->string('title');
             $table->text('body');
-            $table->integer('group_id');
-            $table->integer('category_id');
-            $table->integer('author_id');
+            $table->integer('visits_counter')->default(0);
+            $table->integer('category_id')->unsigned();
+            $table->integer('author_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('author_id')->references('id')->on('users');
+            $table->foreign('category_id')->references('id')->on('forum_categories')->onDelete('cascade');
         });
 	}
 

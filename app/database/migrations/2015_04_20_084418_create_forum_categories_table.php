@@ -16,9 +16,12 @@ class CreateForumCategoriesTable extends Migration {
         {
             $table->increments('id');
             $table->string('title');
-            $table->integer('group_id');
-            $table->integer('author_id');
+            $table->integer('group_id')->unsigned();
+            $table->integer('author_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('author_id')->references('id')->on('users');
+            $table->foreign('group_id')->references('id')->on('forum_groups')->onDelete('cascade');
         });
 	}
 

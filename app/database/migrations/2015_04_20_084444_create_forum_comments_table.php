@@ -16,11 +16,13 @@ class CreateForumCommentsTable extends Migration {
         {
             $table->increments('id');
             $table->text('body');
-            $table->integer('group_id');
-            $table->integer('category_id');
-            $table->integer('thread_id');
-            $table->integer('author_id');
+            $table->integer('rating')->default(0);
+            $table->integer('thread_id')->unsigned();
+            $table->integer('author_id')->unsigned();
             $table->timestamps();
+
+            $table->foreign('author_id')->references('id')->on('users');
+            $table->foreign('thread_id')->references('id')->on('forum_threads')->onDelete('cascade');
         });
 	}
 
