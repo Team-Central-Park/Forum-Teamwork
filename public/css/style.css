@@ -41,3 +41,21 @@
 .icon-bar {
 	background-color: white;
 }
+.alert {
+	width: 85%;
+	margin-left: auto;
+	margin-right: auto;
+}
+.form-control[name="body"] {
+	height: 200px;
+}
+.well {
+	box-shadow: 0 0 5px #000;
+}
+.well h4 {
+	font-size: 12px;
+}
+.well hr {
+	background-color: #E0E0D1;
+	height: 1px;
+}
