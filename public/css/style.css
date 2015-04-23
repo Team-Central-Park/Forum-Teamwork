@@ -24,7 +24,8 @@
 .navbar-brand {
 	color: white;
 	font-family: Exo;
-	font-size: 24px;
+	font-size: 22px;
+	padding: 14px;
 }
 .navbar-brand:hover {
 	color: white;
@@ -32,9 +33,9 @@
 .navbar li>a {
 	color: white;
 	font-family: Exo;
-	font-size: 18px;
+	font-size: 20px;
 }
-.navbar li>a:hover {
+.navbar li>a:hover, .navbar li>a:active, .navbar li>a:focus {
 	color: black;
 }
 .icon-bar {
