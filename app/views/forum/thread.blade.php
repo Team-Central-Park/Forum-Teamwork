@@ -40,7 +40,7 @@
     {{ $comments->links(); }}
 
     @if(Auth::check())
-        <form action="{{ URL::route('forum-store-comment', $thread->id) }}" method="post">
+        <form action="{{ URL::route('forum-store-comment', $thread->id) }}" method="post" id="forumComment">
             <div class="form-group">
                 <label for="body">Body: </label>
                 <textarea class="form-control" name="body" id="body"></textarea>

@@ -41,10 +41,10 @@ body {
 .navbar li>a:hover, .navbar li>a:active, .navbar li>a:focus {
 	color: black;
 }
-.icon-bar {
+.icon-bar {		/* bootstrap menu opener for small resolutions */
 	background-color: white;
 }
-.alert {
+.alert {	/* alerts on top */
 	width: 85%;
 	margin-left: auto;
 	margin-right: auto;
@@ -52,14 +52,14 @@ body {
 .form-control[name="body"] {
 	height: 200px;
 }
-.well {
+.well {		/* default forum post view */
 	box-shadow: 0 0 2px black;
 	border-radius: 0 !important;
 }
-.well h4 {
+.well h4 {	/* post info (date, posted by) */
 	font-size: 12px;
 }
-.well hr {
+.well hr {	/* separates post info from post comment */
 	background-color: #E0E0D1;
 	height: 1px;
 }
@@ -76,15 +76,21 @@ body {
 .panel-heading h3 {
 	font-size: 28px;
 }
-.list-group {
-	background-color: green !important;
-}
 .list-group-item {
 	font-size: 18px;
+	height: 80px;
+	padding-top: 20px;
 }
-.list-group-item:hover {
-	
+.well:nth-child(2) {	/* first post in thread */
+	background-color: white;
+	box-shadow: 0 0 15px black;
 }
-.list-group-item > .pull-right {
-	font-size: 16px;    
+#forumComment {		/* thread comment form */
+	margin-bottom: 40px;
+	border: none !important;
+	box-shadow: none !important;
+}
+.list-group-item > .pull-right {	/* visits counter text */
+	margin: 0 !important;
+	font-size: 14px;
 }
