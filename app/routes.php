@@ -18,6 +18,7 @@ Route::group(array('prefix' => '/forum'), function()
     Route::get('/', array('uses' => 'ForumController@index', 'as' => 'forum-home'));
     Route::get('/category/{id}', array('uses' => 'CategoryController@getCategory', 'as' => 'forum-category'));
     Route::get('/thread/{id}', array('uses' => 'ThreadController@getThread', 'as' => 'forum-thread'));
+    Route::get('/tag/{name}', array('uses' => 'TagController@getTag', 'as' => 'get-tag'));
 
     Route::group(array('before' => 'admin'), function()
     {
@@ -25,6 +26,7 @@ Route::group(array('prefix' => '/forum'), function()
         Route::get('/category/{id}/delete', array('uses' => 'CategoryController@delete', 'as' => 'forum-delete-category'));
         Route::get('/thread/{id}/delete', array('uses' => 'ThreadController@delete', 'as' => 'forum-delete-thread'));
         Route::get('/comment/{id}/delete', array('uses' => 'CommentController@delete', 'as' => 'forum-delete-comment'));
+        Route::get('/tag/{name}/delete', array('uses' => 'TagController@delete', 'as' => 'forum-delete-tag'));
 
         Route::group(array('before' => 'csrf'), function()
         {

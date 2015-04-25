@@ -41,11 +41,21 @@
     </div>
     <div class="panel-body panel-list-group">
         <div class="list-group">
-            @foreach($threads as $thread)
-                <a href="{{ URL::route('forum-thread', $thread -> id) }}" class="list-group-item">
-                    {{ $thread->title }}
-                    <em class="pull-right">Visits: {{ $thread->visits_counter }}</em>
-                </a>
+            @foreach($threads as $key=>$thread)
+                <div class="list-group-item thread">
+                    <a href="{{ URL::route('forum-thread', $thread -> id) }}" class="list-group-item">
+                        <span class="lead">{{ $thread->title }}</span>
+                        <span class="pull-right">{{ isset($lastPosts[$key]) ? 'Last answer: ' . $lastPosts[$key]->updated_at . ' by '
+                            . $lastPosts[$key]->author->username : '' }}</span>
+                    </a>
+                    <em>Visits: {{ $thread->visits_counter }}</em>
+                    <div>
+                        <span>Tags: </span>
+                        @foreach($thread->tags as $tag)
+                            <a class="hvr-back-pulse" href="{{ URL::route('get-tag' , $tag->tag) }}">{{ $tag->tag }}</a>
+                        @endforeach
+                    </div>
+                </div>
             @endforeach
         </div>
     </div>

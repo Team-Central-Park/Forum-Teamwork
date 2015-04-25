@@ -10,9 +10,15 @@ class ThreadController extends BaseController {
 
         $author = $thread->author()->first()->username;
         $comments = $thread->comments()->paginate(10);
+        $tags = $thread->tags()->get();
         $thread->visits_counter++;
         $thread->save();
-        return View::make('forum.thread')->with('thread', $thread)->with('author', $author)->with('comments', $comments);
+
+        return View::make('forum.thread')
+            ->with('thread', $thread)
+            ->with('author', $author)
+            ->with('comments', $comments)
+            ->with('tags', $tags);
     }
 
     public function create($id)
@@ -30,20 +36,28 @@ class ThreadController extends BaseController {
 
         $validator = Validator::make(Input::all(), array(
             'title' => 'required|min:3|max:255',
-            'body' => 'required|min:10|max:65000'
+            'body' => 'required|min:10|max:65000',
+            'tags' => 'required|max:50'
         ));
 
         if($validator->fails()) {
             return Redirect::route('forum-get-new-thread', $id)->withInput()->withErrors($validator)->with('fail', "Your input doesn't match the requirements.");
         }
         else {
+            $tags = preg_split('/\s*,\s*/', Input::get('tags'));
+            array_unique($tags);
+
+
             $thread = new ForumThread;
             $thread->title = Input::get('title');
             $thread->body = Input::get('body');
             $thread->category_id = $id;
             $thread->author_id = Auth::user()->id;
+            for($i = 0; $i < count($tags); $i++) {
+                $tags[$i] = new Tag(array('tag' => $tags[$i]));
+            }
 
-            if($thread->save()) {
+            if($thread->save() && $thread->tags()->saveMany($tags)) {
                 return Redirect::route('forum-thread', $thread->id)->with('success',"Your thread has been saved.");
             }
             else {

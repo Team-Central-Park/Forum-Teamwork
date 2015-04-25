@@ -9,7 +9,15 @@ class CategoryController extends BaseController {
         }
 
         $threads = $category->threads()->paginate(20);
-        return View::make('forum.category')->with('category', $category)->with('threads', $threads);
+        $lastPosts = array();
+        foreach($threads as $th) {
+            $lastPosts[] = $th->comments()->orderBy('created_at', 'desc')->first();
+        }
+
+        return View::make('forum.category')
+            ->with('category', $category)
+            ->with('threads', $threads)
+            ->with('lastPosts', $lastPosts);
     }
 
     public function delete($id) {

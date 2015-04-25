@@ -24,6 +24,13 @@
         <h5><em>Visits: {{ $thread->visits_counter }}</em></h5>
         <hr/>
         <p>{{ nl2br(BBCode::parse($thread->body)) }}</p>
+        <hr/>
+        <div class="tags-container">
+            <span>Tags: </span>
+            @foreach($thread->tags as $tag)
+                <a class="hvr-back-pulse" href="{{ URL::route('get-tag' , $tag->tag) }}">{{ $tag->tag }}</a>
+            @endforeach
+        </div>
     </div>
 
     @foreach($comments as $comment)

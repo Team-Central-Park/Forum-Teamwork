@@ -17,7 +17,10 @@
             <label for="body">Body: </label>
             <textarea class="form-control" name="body" id="body"></textarea>
         </div>
-
+        <div class="form-group">
+            <label for="title">Tags: </label>
+            <input class="form-control" type="text" name="tags"/>
+        </div>
         {{ Form::token() }}
         <div class="form-group">
             <input type="submit" value="Save Thread" class="btn btn-primary"/>

@@ -23,5 +23,10 @@ class ForumThread extends Eloquent
     {
         return $this->belongsTo('User', 'author_id');
     }
+
+    public function tags()
+    {
+        return $this->hasMany('Tag', 'thread_id', 'id');
+    }
 }
 
