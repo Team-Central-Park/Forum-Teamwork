@@ -16,6 +16,9 @@
 .panel-body.panel-list-group .list-group .list-group-item:first-child{
     border-radius: 0;
 }
+body { 
+	padding-top: 70px;
+}
 .navbar {
 	background-color: black;
 	box-shadow: 0px 0.1px 5px black;
@@ -38,10 +41,10 @@
 .navbar li>a:hover, .navbar li>a:active, .navbar li>a:focus {
 	color: black;
 }
-.icon-bar {
+.icon-bar {		/* bootstrap menu opener for small resolutions */
 	background-color: white;
 }
-.alert {
+.alert {	/* alerts on top */
 	width: 85%;
 	margin-left: auto;
 	margin-right: auto;
@@ -49,16 +52,18 @@
 .form-control[name="body"] {
 	height: 200px;
 }
-.well {
-	box-shadow: 0 0 5px #000;
+.well {		/* default forum post view */
+	box-shadow: 0 0 2px black;
+	border-radius: 0 !important;
 }
-.well h4 {
+.well h4 {	/* post info (date, posted by) */
 	font-size: 12px;
 }
-.well hr {
+.well hr {	/* separates post info from post comment */
 	background-color: #E0E0D1;
 	height: 1px;
 }
+
 .hvr-back-pulse {
     padding: 7px;
     border-radius: 10px;
@@ -71,4 +76,32 @@
 }
 .thread:nth-child(odd) {
     background-color: #f2f2f2;
+}
+
+#username, #pass1, #pass2 {
+	width: 300px;
+}
+.container > form {
+	padding: 20px;
+	box-shadow: 0 0 2px black;
+}
+.panel-heading {
+	background-color: #724500 !important;
+}
+.panel-heading h3 {
+	font-size: 28px;
+}
+
+.well:nth-child(2) {	/* first post in thread */
+	background-color: white;
+	box-shadow: 0 0 15px black;
+}
+#forumComment {		/* thread comment form */
+	margin-bottom: 40px;
+	border: none !important;
+	box-shadow: none !important;
+}
+.list-group-item > .pull-right {	/* visits counter text */
+	margin: 0 !important;
+	font-size: 14px;
 }
