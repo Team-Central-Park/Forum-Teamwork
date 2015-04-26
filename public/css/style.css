@@ -141,12 +141,15 @@ body {
 	border-radius: 0 !important;
 	width: 100% !important;
 	margin-bottom: 20px;
-	background-color: rgba(0,0,0,0.8);
-	color: white;
+	/*background-color: rgba(0,0,0,0.8);*/
+	background-color: transparent;
+	color: black;
+	border: 1px dotted black;
 }
 .thread > .list-group-item:hover, .thread > .list-group-item:active, .thread > .list-group-item:focus {
 	background-color: black;
 	color: white;
+	text-decoration: underline;
 }
 .breadcrumb {
 	box-shadow: 0 0 10px black;
