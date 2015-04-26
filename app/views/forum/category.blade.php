@@ -43,7 +43,7 @@
         <div class="list-group">
             @foreach($threads as $key=>$thread)
                 <div class="list-group-item thread">
-                    <a href="{{ URL::route('forum-thread', $thread -> id) }}" class="list-group-item">
+                    <a href="{{ URL::route('forum-thread', $thread -> id) }}" class="list-group-item hvr-fade">
                         <span class="lead">{{ $thread->title }}</span>
                         <span class="pull-right">{{ isset($lastPosts[$key]) ? 'Last answer: ' . $lastPosts[$key]->updated_at . ' by '
                             . $lastPosts[$key]->author->username : '' }}</span>
