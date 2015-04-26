@@ -28,7 +28,12 @@
         <div class="tags-container">
             <span>Tags: </span>
             @foreach($thread->tags as $tag)
-                <a class="hvr-back-pulse" href="{{ URL::route('get-tag' , $tag->tag) }}">{{ $tag->tag }}</a>
+            <div class="tag hvr-back-pulse">
+                <a href="{{ URL::route('get-tag' , $tag->tag) }}">{{ $tag->tag }}</a>
+                @if(Auth::check() && (Auth::user() -> isAdmin() || Auth::user()->id === $thread->author_id))
+                    <button class="btn-xs btn-danger remove-tag" data-tag-name="{{ $tag->tag }}" data-thread-id="{{ $thread->id }}" title="Remove this Tag">X</button>
+                @endif
+            </div>
             @endforeach
         </div>
     </div>
@@ -37,9 +42,21 @@
         <div class="well">
             <h4>By: {{ $comment->author->username }} on {{ $comment->created_at }}</h4>
             <hr/>
-            <p>{{ nl2br(BBCode::parse($comment->body)) }}</p>
-            @if(Auth::check() && Auth::user() -> isAdmin())
+            <p class="comment-content">{{ nl2br(BBCode::parse($comment->body)) }}</p>
+            @if(Auth::check() && (Auth::user() -> isAdmin() || Auth::user()->id === $comment->author->id))
                 <a class="btn btn-danger" href="{{ URL::route('forum-delete-comment', $comment->id) }}">Delete Comment</a>
+                <button class="btn btn-success edit-comment">Edit Comment</button>
+                <button class="btn btn-danger cancel-edit-comment">Cancel</button>
+                <button class="btn btn-success send-edited-comment" data-comment-id="{{ $comment->id }}">Save</button>
+
+                <div class="alert alert-success success-alert" hidden="hidden">
+                    <strong>Success! </strong>
+                    This comment was edited.
+                </div>
+                <div class="alert alert-danger error-alert" hidden="hidden">
+                    <strong>Error! </strong>
+                    Something goes wrong!
+                </div>
             @endif
         </div>
     @endforeach

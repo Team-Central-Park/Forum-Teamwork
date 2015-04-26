@@ -52,7 +52,12 @@
                     <div>
                         <span>Tags: </span>
                         @foreach($thread->tags as $tag)
-                            <a class="hvr-back-pulse" href="{{ URL::route('get-tag' , $tag->tag) }}">{{ $tag->tag }}</a>
+                        <div class="tag hvr-back-pulse">
+                            <a href="{{ URL::route('get-tag' , $tag->tag) }}">{{ $tag->tag }}</a>
+                            @if(Auth::check() && (Auth::user() -> isAdmin() || Auth::user()->id === $thread->author_id))
+                            <button class="btn-xs btn-danger remove-tag" data-tag-name="{{ $tag->tag }}" data-thread-id="{{ $thread->id }}" title="Remove this Tag">X</button>
+                            @endif
+                        </div>
                         @endforeach
                     </div>
                 </div>

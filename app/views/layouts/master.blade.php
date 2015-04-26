@@ -47,6 +47,10 @@
     @section('javascript')
         <script src="http://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <script>
+            var mainURL = '<?= URL::to('/') ?>';
+        </script>
+        {{ HTML::script('js/app.js'); }}
     @show
 </body>
 </html>

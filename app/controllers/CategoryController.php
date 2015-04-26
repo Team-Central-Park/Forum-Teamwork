@@ -8,7 +8,7 @@ class CategoryController extends BaseController {
             return Redirect::Route('forum-home')->with('fail', "That category doesn't exist.");
         }
 
-        $threads = $category->threads()->paginate(20);
+        $threads = $category->threads()->orderBy('updated_at', 'desc')->paginate(20);
         $lastPosts = array();
         foreach($threads as $th) {
             $lastPosts[] = $th->comments()->orderBy('created_at', 'desc')->first();

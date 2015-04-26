@@ -12,6 +12,7 @@ class ThreadController extends BaseController {
         $comments = $thread->comments()->paginate(10);
         $tags = $thread->tags()->get();
         $thread->visits_counter++;
+        $thread->timestamps = false;
         $thread->save();
 
         return View::make('forum.thread')

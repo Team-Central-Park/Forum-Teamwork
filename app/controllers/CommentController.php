@@ -43,4 +43,28 @@ class CommentController extends BaseController {
             return Redirect::route('forum-thread', $thread_id)->with('fail', "An error occurred while deleting the comment.");
         }
     }
+
+    public function edit($id) {
+        $comment = ForumComment::find($id);
+        if (!(Auth::user()->isAdmin() || $comment->author->id === Auth::user()->id)) {
+            echo 0;
+            return;
+        }
+
+        $validator = Validator::make(Input::all(), array(
+            'body' => 'required|min:5'
+        ));
+
+        if($validator->fails()) {
+            echo 0;
+            return;
+        }
+
+        $comment->body = e(Input::get('body'));
+        if ($comment->save()) {
+            echo 1;
+        } else {
+            echo 0;
+        }
+    }
 }

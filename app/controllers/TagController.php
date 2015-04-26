@@ -38,4 +38,24 @@ class TagController extends BaseController{
 
         return Redirect::route('forum-home')->with('fail', 'An error occurred while deleting the tag.');
     }
+
+    public function deleteOne($threadID, $name) {
+        $tag = Tag::where('thread_id', '=', $threadID)->where('tag', '=', $name)->first();
+        if($tag == null) {
+            echo 0;
+            return;
+        }
+
+        if (!(Auth::user()->isAdmin() || $tag->thread->author_id === Auth::user()->id)) {
+            echo 0;
+            return;
+        }
+
+        if (Tag::where('thread_id', '=', $threadID)->where('tag', '=', $name)->delete()) {
+            echo 1;
+            return;
+        }
+
+        echo 0;
+    }
 } 

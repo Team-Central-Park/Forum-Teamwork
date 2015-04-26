@@ -4,6 +4,8 @@ class ForumComment extends Eloquent
 {
     protected $table = 'forum_comments';
 
+    protected $touches = array('thread');
+
     public function group()
     {
         return $this->belongsTo('ForumGroup');
