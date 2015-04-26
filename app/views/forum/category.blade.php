@@ -14,7 +14,7 @@
 
 @if(Auth::check())
     <div>
-        <a href="{{ URL::route('forum-get-new-thread', $category->id) }}" class="btn btn-default">
+        <a href="{{ URL::route('forum-get-new-thread', $category->id) }}" class="btn btn-primary">
             Add Thread
         </a>
     </div>

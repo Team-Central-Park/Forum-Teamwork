@@ -66,12 +66,12 @@
     @if(Auth::check())
         <form action="{{ URL::route('forum-store-comment', $thread->id) }}" method="post" id="forumComment">
             <div class="form-group">
-                <label for="body">Body: </label>
+                <label for="body">Write comment: </label>
                 <textarea class="form-control" name="body" id="body"></textarea>
             </div>
             {{ Form::token() }}
             <div class="form-group">
-                <input type="submit" value="Save Thread" class="btn btn-primary"/>
+                <input type="submit" value="Publish" class="btn btn-primary"/>
             </div>
         </form>
 
