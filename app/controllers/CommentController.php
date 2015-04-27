@@ -3,6 +3,11 @@
 class CommentController extends BaseController {
 
     public function store($id) {
+        /*
+         *  This prevent multiple submissions and throw TokenMismatchException
+         */
+        //Session::put('_token', sha1(microtime()));
+
         $thread = ForumThread::find($id);
         if($thread == null) {
             Redirect::route('forum-home')->with('fail', "That thread doesn't exist.");

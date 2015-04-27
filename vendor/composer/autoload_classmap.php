@@ -35,6 +35,7 @@ return array(
     'CreateForumCommentsTable' => $baseDir . '/app/database/migrations/2015_04_20_084444_create_forum_comments_table.php',
     'CreateForumGroupsTable' => $baseDir . '/app/database/migrations/2015_04_20_084338_create_forum_groups_table.php',
     'CreateForumThreadsTable' => $baseDir . '/app/database/migrations/2015_04_20_084432_create_forum_threads_table.php',
+    'CreatePasswordRemindersTable' => $baseDir . '/app/database/migrations/2015_04_27_162927_create_password_reminders_table.php',
     'CreateTagsTablele' => $baseDir . '/app/database/migrations/2015_04_24_135525_create_tags_tablele.php',
     'CreateUsersTable' => $baseDir . '/app/database/migrations/2015_04_20_084310_create_users_table.php',
     'Crypt_AES' => $vendorDir . '/phpseclib/phpseclib/phpseclib/Crypt/AES.php',
