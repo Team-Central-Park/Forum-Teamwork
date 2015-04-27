@@ -9,6 +9,7 @@
     @show
 </head>
 <body>
+<div id="page-wrapper">
     <div class="navbar navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -58,11 +59,9 @@
     @endif
 
     <div class="container">@yield('content')</div>
-
-    <footer class="footer navbar-fixed-bottom">
-    	<div class="container">
-    		<p>&#169; 2015 All Rights Reserved by Team Central Park</p>
-		</div>
+</div>
+    <footer class="footer">
+    	<p>&#169; 2015 All Rights Reserved by Team Central Park</p>
     </footer>
 
     @section('javascript')
