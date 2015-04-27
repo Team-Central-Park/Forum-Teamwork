@@ -19,6 +19,8 @@
 body {
 	padding-top: 70px;
 	background-color: #E6E6E6;
+	background-image: url(../img/background.jpg);
+	background-attachment: fixed;
 }
 .navbar {
 	background-color: black;

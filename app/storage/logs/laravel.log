@@ -1,0 +1,4 @@
+[2015-04-27 21:14:52] development.ERROR: exception 'Symfony\Component\Debug\Exception\FatalErrorException' with message 'syntax error, unexpected '}'' in C:\Users\John\XAMPP\htdocs\forumteamwork\app\database\migrations\2015_04_27_124802_add_email_to_users.php:29
+Stack trace:
+#0 [internal function]: Illuminate\Exception\Handler->handleShutdown()
+#1 {main} [] []
