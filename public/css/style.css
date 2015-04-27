@@ -191,11 +191,25 @@ form {
 .latest-threads, .latest-comments {
 	margin-top: 50px;
 	box-shadow: 0 0 10px black;
+	background-color: white;
+	border-radius: 10px;
 }
 .latest-threads h3, .latest-comments h3 {
 	margin-left: 15px;
+	font-size: 28px;
 }
 .latest-threads .col-md-4, .latest-comments .col-md-4 {
 	margin-top: 10px;
 	margin-bottom: 10px;
+}
+.homepage-latest-links {
+	border: 1px solid #111111;
+	border-radius: 0 !important;
+}
+.homepage-latest-links:hover {
+	background-color: black !important;
+	color: white !important;
+}
+.latest-comments {
+	margin-bottom: 50px;
 }
