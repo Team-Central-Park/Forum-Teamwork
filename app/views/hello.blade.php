@@ -18,7 +18,7 @@
     	$latestThreads = DB::table('forum_threads')->orderBy('created_at', 'desc')->take(6)->get();
     	foreach ($latestThreads as $thr) {
     		$thrLink = URL::route('forum-thread', $thr -> id);
-    		echo "<div class=\"col-md-4\">";
+    		echo "<div>";
     		echo "<a href=\"$thrLink\" class=\"list-group-item homepage-latest-links hvr-fade\">";
     		echo "<b>$thr->title</b>" . "<br>";
     		$threadAuthor = DB::table('users')->where('id', $thr->author_id)->pluck('username');
@@ -36,9 +36,14 @@
     	foreach ($latestComments as $comm) {
     		$thrLink = URL::route('forum-thread', $comm -> thread_id);
     		$thrTitle = DB::table('forum_threads')->where('id', $comm -> thread_id)->pluck('title');
-    		echo "<div class=\"col-md-4\">";
+    		$commBody = $comm->body;
+    		$commLength = strlen($commBody);
+    		if ($commLength > 200) {
+    			$commBody = substr($commBody, 0, 200);
+    		}
+    		echo "<div>";
     		echo "<a href=\"$thrLink\" class=\"list-group-item homepage-latest-links hvr-fade\">";
-    		echo "<b>$comm->body</b>" . "<br>";
+    		echo "<b><i>$commBody</i></b>" . "<br>";
     		echo "posted in: <u>$thrTitle</u> <br>";
     		$commAuthor = DB::table('users')->where('id', $comm->author_id)->pluck('username');
     		echo "by: $commAuthor <br>";

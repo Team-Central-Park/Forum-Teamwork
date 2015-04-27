@@ -193,18 +193,22 @@ form {
 	box-shadow: 0 0 10px black;
 	background-color: white;
 	border-radius: 10px;
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
 }
 .latest-threads h3, .latest-comments h3 {
 	margin-left: 15px;
-	font-size: 28px;
+	font-size: 34px;
 }
 .latest-threads .col-md-4, .latest-comments .col-md-4 {
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
 .homepage-latest-links {
-	border: 1px solid #111111;
+	border: 1px dotted #111111;
 	border-radius: 0 !important;
+	width: 100%;
 }
 .homepage-latest-links:hover {
 	background-color: black !important;
@@ -212,4 +216,14 @@ form {
 }
 .latest-comments {
 	margin-bottom: 50px;
+}
+.comment-content {
+	width: 100% !important;
+	word-wrap: break-word;
+}
+.latest-comments div:nth-child(odd), .latest-threads div:nth-child(odd) {
+	background-color: #E6E6E6 !important;
+}
+.latest-comments:nth-child(even), .latest-threads:nth-child(even) {
+	background-color: white !important;
 }
