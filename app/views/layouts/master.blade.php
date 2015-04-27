@@ -19,10 +19,22 @@
                 </button>
                 <a href="{{ URL::route('home') }}" class="navbar-brand">Forum</a>
             </div>
+
+
+
             <div class="navbar-collapse collapse navbar-responsive-collapse">
                 <ul class="nav navbar-nav">
                     <li><a href="{{ URL::route('home') }}" class="hvr-fade">Home</a></li>
                     <li><a href="{{ URL::route('forum-home') }}" class="hvr-fade">Forums</a></li>
+                </ul>
+                <ul class="nav navbar-nav">
+                    <li>
+                        {{ Form::open(array('route' => 'forum-search', 'class' => 'form-inline')) }}
+                        {{ Form::text('text', Input::old('text'), array('placeholder'=>'Search',  'class'=>'form-control-sm')); }}
+                        {{ Form::select('type', array('1' => 'Tag', '2' => 'Question'), '1', array('class' => 'form-control-sm')) }}
+                        {{ Form::submit('Search', array('class' => 'btn-sm btn-info')) }}
+                        {{ Form::close() }}
+                    </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     @if(!Auth::check())
@@ -37,6 +49,7 @@
             </div>
         </div>
     </div>
+    {{ $errors->first('text'); }}
 
     @if(Session::has('success'))
         <div class="alert alert-success">{{ Session::get('success') }}</div>

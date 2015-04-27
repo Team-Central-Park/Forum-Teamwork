@@ -20,6 +20,11 @@ Route::group(array('prefix' => '/forum'), function()
     Route::get('/thread/{id}', array('uses' => 'ThreadController@getThread', 'as' => 'forum-thread'));
     Route::get('/tag/{name}', array('uses' => 'TagController@getTag', 'as' => 'get-tag'));
 
+    Route::group(array('before' => 'csrf'), function()
+    {
+        Route::post('/search', array('uses' => 'ForumController@search', 'as' => 'forum-search'));
+    });
+
     Route::group(array('before' => 'admin'), function()
     {
         Route::get('/group/{id}/delete', array('uses' => 'GroupController@delete', 'as' => 'forum-delete-group'));
