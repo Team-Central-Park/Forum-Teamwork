@@ -1,0 +1,58 @@
+
+<?php $__env->startSection('head'); ?>
+    @parent
+    <title>Home Page</title>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+    <?php if(Session::has('success')): ?>
+        <div class="alert alert-success"><?php echo Session::get('success'); ?></div>
+    <?php elseif (Session::has('fail')): ?>
+        <div class="alert alert-danger"><?php echo Session::get('fail'); ?></div>
+    <?php endif; ?>
+
+    <?php
+    	echo "<div class=\"latest-threads row\">";
+    	echo "<h3>Latest Threads</h3>";
+    	$latestThreads = DB::table('forum_threads')->orderBy('created_at', 'desc')->take(6)->get();
+    	foreach ($latestThreads as $thr) {
+    		$thrLink = URL::route('forum-thread', $thr -> id);
+    		echo "<div>";
+    		echo "<a href=\"$thrLink\" class=\"list-group-item homepage-latest-links hvr-fade\">";
+    		echo "<b>$thr->title</b>" . "<br>";
+    		$threadAuthor = DB::table('users')->where('id', $thr->author_id)->pluck('username');
+    		echo "by: $threadAuthor <br>";
+    		$threadLastUpd = new DateTime($thr->created_at);
+    		echo "created: " . $threadLastUpd->format('d-m-Y H:i:s') . "<br>";
+    		echo "</a>";
+    		echo "</div>";
+    	}
+    	echo "</div>";
+
+    	echo "<div class=\"latest-comments row\">";
+    	echo "<h3>Latest Comments</h3>";
+    	$latestComments = DB::table('forum_comments')->orderBy('created_at', 'desc')->take(6)->get();
+    	foreach ($latestComments as $comm) {
+    		$thrLink = URL::route('forum-thread', $comm -> thread_id);
+    		$thrTitle = DB::table('forum_threads')->where('id', $comm -> thread_id)->pluck('title');
+    		$commBody = $comm->body;
+    		$commLength = strlen($commBody);
+    		if ($commLength > 200) {
+    			$commBody = substr($commBody, 0, 200);
+    		}
+    		echo "<div>";
+    		echo "<a href=\"$thrLink\" class=\"list-group-item homepage-latest-links hvr-fade\">";
+    		echo "<b><i>$commBody</i></b>" . "<br>";
+    		echo "posted in: <u>$thrTitle</u> <br>";
+    		$commAuthor = DB::table('users')->where('id', $comm->author_id)->pluck('username');
+    		echo "by: $commAuthor <br>";
+    		$commLastUpd = new DateTime($comm->created_at);
+    		echo "posted: " . $commLastUpd->format('d-m-Y H:i:s') . "<br>";
+    		echo "</a>";
+    		echo "</div>";
+    	}
+    	echo "</div>";
+    ?>
+	
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

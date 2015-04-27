@@ -1,0 +1,47 @@
+
+@sdection('head')
+@parent
+<title>Register Page</title>
+<?php $__env->stopSection(); ?>
+
+<?php $__env->startSection('content'); ?>
+    <div class="container">
+        <h1>Register</h1>
+
+        <form role="form" method="post" action="<?php echo URL::route('postCreate'); ?>">
+            <div class="form-group <?php echo ($errors->has('username')) ? ' has-error' : ''; ?>">
+                <label for="username">Username: </label>
+                    <input id="username" name="username" type="text" class="form-control">
+                    <?php if($errors->has('username')): ?>
+                        <?php echo $errors->first('username'); ?>
+                    <?php endif; ?>
+            </div>
+            <div style="width: 300px" class="form-group <?php echo ($errors->has('email')) ? ' has-error' : ''; ?>">
+                <label for="email">Email: </label>
+                    <input id="email" name="email" type="email" class="form-control">
+                    <?php if($errors->has('email')): ?>
+                        <?php echo $errors->first('email'); ?>
+                    <?php endif; ?>
+            </div>
+            <div class="form-group <?php echo ($errors->has('pass1')) ? ' has-error' : ''; ?>">
+                <label for="pass1">Password: </label>
+                    <input id="pass1" name="pass1" type="password" class="form-control">
+                    <?php if($errors->has('pass1')): ?>
+                        <?php echo $errors->first('pass1'); ?>
+                <?php endif; ?>
+            </div>
+            <div class="form-group <?php echo ($errors->has('pass2')) ? ' has-error' : ''; ?>">
+                <label for="pass2">Confirm Password: </label>
+                    <input id="pass2" name="pass2" type="password" class="form-control">
+                    <?php if($errors->has('pass2')): ?>
+                        <?php echo $errors->first('pass2'); ?>
+                <?php endif; ?>
+            </div>
+            <?php echo Form::token(); ?>
+            <div class="form-group">
+                <input type="submit" value="Register" class="btn btn-default">
+            </div>
+        </form>
+    </div>
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.master', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

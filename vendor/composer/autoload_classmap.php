@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AddEmailToUsers' => $baseDir . '/app/database/migrations/2015_04_27_124802_add_email_to_users.php',
     'BaseController' => $baseDir . '/app/controllers/BaseController.php',
     'Boris\\Boris' => $vendorDir . '/d11wtq/boris/lib/Boris/Boris.php',
     'Boris\\CLIOptionsHandler' => $vendorDir . '/d11wtq/boris/lib/Boris/CLIOptionsHandler.php',
@@ -1544,6 +1545,8 @@ return array(
     'Symfony\\Component\\Translation\\Writer\\TranslationWriter' => $vendorDir . '/symfony/translation/Symfony/Component/Translation/Writer/TranslationWriter.php',
     'System_SSH_Agent' => $vendorDir . '/phpseclib/phpseclib/phpseclib/System/SSH/Agent.php',
     'System_SSH_Agent_Identity' => $vendorDir . '/phpseclib/phpseclib/phpseclib/System/SSH/Agent.php',
+    'Tag' => $baseDir . '/app/models/Tag.php',
+    'TagController' => $baseDir . '/app/controllers/TagController.php',
     'TestCase' => $baseDir . '/app/tests/TestCase.php',
     'ThreadController' => $baseDir . '/app/controllers/ThreadController.php',
     'User' => $baseDir . '/app/models/User.php',

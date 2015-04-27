@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <?php $__env->startSection('head'); ?>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <?php echo HTML::style('css/hover.css');; ?>
+    <?php echo HTML::style('css/style.css');; ?>
+    <?php echo $__env->yieldSection(); ?>
+</head>
+<body>
+    <div class="navbar navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="<?php echo URL::route('home'); ?>" class="navbar-brand">Forum</a>
+            </div>
+            <div class="navbar-collapse collapse navbar-responsive-collapse">
+                <ul class="nav navbar-nav">
+                    <li><a href="<?php echo URL::route('home'); ?>" class="hvr-fade">Home</a></li>
+                    <li><a href="<?php echo URL::route('forum-home'); ?>" class="hvr-fade">Forums</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <?php if(!Auth::check()): ?>
+                        <li><a href="<?php echo URL::route('getCreate'); ?>" class="hvr-fade">Register</a></li>
+                        <li><a href="<?php echo URL::route('getLogin'); ?>" class="hvr-fade">Login</a></li>
+                    <?php else: ?>
+                    	<li><a href="#">You are logged as: 
+                    					<span class="username-topmenu"><?php echo Auth::user()->username; ?></span></a></li>
+                        <li><a href="<?php echo URL::route('getLogout'); ?>" class="hvr-fade">Logout</a></li>
+                    <?php endif; ?>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <?php if(Session::has('success')): ?>
+        <div class="alert alert-success"><?php echo Session::get('success'); ?></div>
+    <?php elseif (Session::has('fail')): ?>
+        <div class="alert alert-danger"><?php echo Session::get('fail'); ?></div>
+    <?php endif; ?>
+
+    <div class="container"><?php echo $__env->yieldContent('content'); ?></div>
+
+    <?php $__env->startSection('javascript'); ?>
+        <script src="http://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <script>
+            var mainURL = '<?= URL::to('/') ?>';
+        </script>
+        <?php echo HTML::script('js/app.js');; ?>
+    <?php echo $__env->yieldSection(); ?>
+</body>
+</html>
