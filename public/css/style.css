@@ -232,6 +232,18 @@ form {
     background-color: #000000;
 }
 
+.footer {
+    background-color: black;
+	color: white;
+	margin-top: 50px;
+	font-family: Exo;
+	font-size: 14px;
+}
+.footer p {
+	text-align: center;
+	line-height: 100px;
+}
+
 @media (max-width: 1000px) and (min-width: 765px){
     .navbar-nav li a {
         font-size: 0.9em;

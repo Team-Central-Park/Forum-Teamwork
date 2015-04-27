@@ -17,6 +17,13 @@
                         {{ $errors->first('username') }}
                     @endif
             </div>
+            <div style="width: 300px" class="form-group {{ ($errors->has('email')) ? ' has-error' : '' }}">
+                <label for="email">Email: </label>
+                    <input id="email" name="email" type="email" class="form-control">
+                    @if($errors->has('email'))
+                        {{ $errors->first('email') }}
+                    @endif
+            </div>
             <div class="form-group {{ ($errors->has('pass1')) ? ' has-error' : '' }}">
                 <label for="pass1">Password: </label>
                     <input id="pass1" name="pass1" type="password" class="form-control">

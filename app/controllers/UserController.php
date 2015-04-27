@@ -15,9 +15,10 @@ class UserController extends BaseController {
     public function postCreate()
     {
         $validate = Validator::make(Input::all(), array(
-            'username' => 'required|unique:users|min:4',
-            'pass1' => 'required|min:6',
-            'pass2' => 'required|same:pass1',
+            'username' => 'required|unique:users|AlphaDash|min:6',
+            'pass1' => 'required|AlphaNum|min:6',
+            'pass2' => 'required|AlphaNum|same:pass1',
+            'email' => 'required|unique:users|Email'
         ));
         if ($validate->fails())
         {
@@ -28,6 +29,7 @@ class UserController extends BaseController {
             $user = new User();
             $user->username = Input::get('username');
             $user->password = Hash::make(Input::get('pass1'));
+            $user->email = Input::get('email');
             if ($user->save())
             {
                 return Redirect::route('home')->with('success', 'You registed successfully. You can now login.');
