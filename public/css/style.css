@@ -235,13 +235,16 @@ form {
 .footer {
     background-color: black;
 	color: white;
-	margin-top: 50px;
 	font-family: Exo;
 	font-size: 14px;
+	height: 70px;
 }
 .footer p {
 	text-align: center;
-	line-height: 100px;
+	line-height: 70px;
+}
+body > .container {
+	margin-bottom: 100px;
 }
 
 @media (max-width: 1000px) and (min-width: 765px){

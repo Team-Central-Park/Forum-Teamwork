@@ -59,7 +59,7 @@
 
     <div class="container">@yield('content')</div>
 
-    <footer class="footer">
+    <footer class="footer navbar-fixed-bottom">
     	<div class="container">
     		<p>&#169; 2015 All Rights Reserved by Team Central Park</p>
 		</div>
