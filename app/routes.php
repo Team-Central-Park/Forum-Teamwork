@@ -71,4 +71,7 @@ Route::group(array('before' => 'guest'), function()
 Route::group(array('before' => 'auth'), function()
 {
    Route::get('/user/logout', array('uses' => 'UserController@getLogout', 'as' => 'getLogout'));
+	Route::get('/user/profile', array('uses' => 'UserController@postImage', 'as' => 'postImage'));
+   Route::get('/user/profile', array('uses' => 'UserController@getProfile', 'as' => 'getProfile'));
+   
 });

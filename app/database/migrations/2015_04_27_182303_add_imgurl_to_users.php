@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddEmailToUsers extends Migration {
+class AddImgUrlToUsers extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -14,7 +14,7 @@ class AddEmailToUsers extends Migration {
 	{
 		Schema::table('users', function($table)
         {
-           $table->string('email');
+           $table->string('imageURL')->default("http://media-cache-ec0.pinimg.com/736x/d4/45/20/d4452035f501e05adf90c63af107bb1a.jpg");
         });
 	}
 
@@ -25,7 +25,7 @@ class AddEmailToUsers extends Migration {
 	 */
 	public function down()
 	{
-        Schema::drop('users')
+        Schema::drop('users');
 	}
 
 }

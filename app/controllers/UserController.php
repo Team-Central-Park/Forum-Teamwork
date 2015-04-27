@@ -11,7 +11,7 @@ class UserController extends BaseController {
     public function getLogin() {
         return View::make('user.login');
     }
-
+	
     public function postCreate()
     {
         $validate = Validator::make(Input::all(), array(
@@ -30,6 +30,7 @@ class UserController extends BaseController {
             $user->username = Input::get('username');
             $user->password = Hash::make(Input::get('pass1'));
             $user->email = Input::get('email');
+			$user->imageURL = "http://media-cache-ec0.pinimg.com/736x/d4/45/20/d4452035f501e05adf90c63af107bb1a.jpg";
             if ($user->save())
             {
                 return Redirect::route('home')->with('success', 'You registed successfully. You can now login.');
@@ -40,6 +41,32 @@ class UserController extends BaseController {
             }
         }
     }
+	public function postImage()
+	{
+		$validator = Validator::make(Input::all(), array(
+            'imgUrl' => 'required'
+        ));
+		if($validator->fails())
+        {
+			
+        }
+        else
+        {
+            $auth = Auth::attempt(array(
+			
+                'imgUrl' => Input::get('imgUrl')
+            ));
+            if($auth)
+            {
+				$user = new User();
+               $user->imageURL = Input::get('imgUrl');
+            }
+            else
+            {
+                return Redirect::route('getProfile')->with('fail', 'You entered the wrong url credentials, please try again!');
+            }
+        }
+	}
     public function postLogin()
     {
         $validator = Validator::make(Input::all(), array(
@@ -74,5 +101,10 @@ class UserController extends BaseController {
         Auth::logout();
         return Redirect::route('home');
     }
+	public function getProfile()
+    {
+        return View::make('user.profile');
+    }
+	
 }
 ?>
