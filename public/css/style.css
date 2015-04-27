@@ -227,8 +227,13 @@ form {
 .latest-comments:nth-child(even), .latest-threads:nth-child(even) {
 	background-color: white !important;
 }
+.form-inline {
+    padding: 10px 0 0 0;
+    background-color: #000000;
+}
+
 .footer {
-	background-color: black;
+    background-color: black;
 	color: white;
 	font-family: Exo;
 	font-size: 14px;
@@ -238,6 +243,12 @@ form {
 	text-align: center;
 	line-height: 70px;
 }
-body > 	.container {
+body > .container {
 	margin-bottom: 100px;
+}
+
+@media (max-width: 1000px) and (min-width: 765px){
+    .navbar-nav li a {
+        font-size: 0.9em;
+    }
 }
