@@ -17,7 +17,7 @@ $(document).ready(function ()
 
     $(".new_category").click(function()
     {
-        var id = $(".new_category").attr('id');
+        var id = $(this).attr('id');
         var pieces = id.split("-");
         $("#category_form").prop('action', mainURL + '/forum/category/' + pieces[2] + '/new');
     });
