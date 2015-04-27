@@ -72,3 +72,8 @@ Route::group(array('before' => 'auth'), function()
 {
    Route::get('/user/logout', array('uses' => 'UserController@getLogout', 'as' => 'getLogout'));
 });
+
+Route::get('/reminder', array('uses' => 'RemindersController@getRemind', 'as' => 'forgotten-pass'));
+Route::post('/reminder', array('uses' => 'RemindersController@postRemind'));
+Route::post('/reset', array('uses' => 'RemindersController@postReset'));
+Route::get('/password/reset/{token}', array('uses' => 'RemindersController@getReset'));

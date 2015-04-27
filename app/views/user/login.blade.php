@@ -32,6 +32,7 @@
                 </label>
             </div>
             {{ Form::token() }}
+            <a href="{{ URL::route('forgotten-pass') }}">Forgotten Password</a>
             <div class="form-group">
                 <input type="submit" value="Login" class="btn btn-default">
             </div>
