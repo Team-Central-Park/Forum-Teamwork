@@ -58,4 +58,31 @@ class TagController extends BaseController{
 
         echo 0;
     }
+
+    public function add($threadID, $name) {
+        $validator = Validator::make(
+            array(
+                'id' => $threadID,
+                'name' => $name
+            ),
+            array(
+                'id' => 'required|exists:forum_threads,id',
+                'name' => 'required|max:50'
+        ));
+
+        if($validator->fails()) {
+            echo 0;
+            return;
+        }
+
+        $tag = new Tag();
+        $tag->thread_id = $threadID;
+        $tag->tag = $name;
+
+        if ($tag->save()) {
+            echo 1;
+        } else {
+            echo 0;
+        }
+    }
 } 

@@ -40,6 +40,8 @@ Route::group(array('prefix' => '/forum'), function()
         Route::get('/thread/{id}/new', array('uses' => 'ThreadController@create', 'as' => 'forum-get-new-thread'));
         Route::post('/comment/{id}/edit', array('uses' => 'CommentController@edit', 'as' => 'forum-edit-comment'));
         Route::get('/thread/{id}/tag/{name}/delete', array('uses' => 'TagController@deleteOne', 'as' => 'forum-delete-tag-from-thread'));
+        Route::get('/thread/{id}/tag/{name}/add', array('uses' => 'TagController@add', 'as' => 'forum-add-tag'));
+        Route::post('/thread/{id}/edit', array('uses' => 'ThreadController@edit', 'as' => 'forum-edit-thread'));
 
         Route::group(array('before' => 'csrf'), function()
         {

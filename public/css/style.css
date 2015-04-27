@@ -181,3 +181,9 @@ form {
 #forumComment .btn {
 	margin-bottom: 0 !important;
 }
+.remove-tag {
+    border: none;
+}
+.save-tag, .new-tag-name {
+    display: none;
+}

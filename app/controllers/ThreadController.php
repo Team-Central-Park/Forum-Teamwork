@@ -8,8 +8,13 @@ class ThreadController extends BaseController {
             return Redirect::route('forum-home')->with('fail', "That thread doesn't exist.");
         }
 
+        $commentsCountPerUser = array();
         $author = $thread->author()->first()->username;
         $comments = $thread->comments()->paginate(10);
+        foreach($comments as $c) {
+            $commentsCountPerUser[] = ForumComment::where('author_id', '=', $c->author_id)->count();
+        }
+
         $tags = $thread->tags()->get();
         $thread->visits_counter++;
         $thread->timestamps = false;
@@ -19,7 +24,8 @@ class ThreadController extends BaseController {
             ->with('thread', $thread)
             ->with('author', $author)
             ->with('comments', $comments)
-            ->with('tags', $tags);
+            ->with('tags', $tags)
+            ->with('commentsPerUser', $commentsCountPerUser);
     }
 
     public function create($id)
@@ -47,7 +53,6 @@ class ThreadController extends BaseController {
         else {
             $tags = preg_split('/\s*,\s*/', Input::get('tags'));
             array_unique($tags);
-
 
             $thread = new ForumThread;
             $thread->title = Input::get('title');
@@ -77,6 +82,27 @@ class ThreadController extends BaseController {
             return Redirect::back()->with('success', 'The thread was deleted.');
         } else {
             return Redirect::back()->with('fail', 'An error occurred while deleting the thread.');
+        }
+    }
+
+    public function edit($id) {
+        $validator = Validator::make(Input::all(), array(
+            'thread_title' => 'required|min:3|max:255',
+            'thread_body' => 'required|min:10|max:65000'
+        ));
+
+        if($validator->fails()) {
+            return Redirect::back()->withInput()->withErrors($validator)->with('fail', "Your input doesn't match the requirements.");
+        }
+
+        $thread = ForumThread::find($id);
+        $thread->title = Input::get('thread_title');
+        $thread->body = Input::get('thread_body');
+
+        if($thread->save()) {
+            return Redirect::back()->with('success', 'The thread was edited.');
+        } else {
+            return Redirect::back()->with('fail', 'An error occurred while editing the thread.');
         }
     }
 }

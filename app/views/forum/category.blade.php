@@ -49,6 +49,7 @@
                             . $lastPosts[$key]->author->username : '' }}</span>
                     </a>
                     <em>Visits: {{ $thread->visits_counter }}</em>
+                    <span class="pull-right">Created at: {{ $thread->created_at }} by {{ $thread->author->username }}</span>
                     <div>
                         <span>Tags: </span>
                         @foreach($thread->tags as $tag)

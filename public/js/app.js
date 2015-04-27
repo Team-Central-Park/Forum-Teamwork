@@ -10,11 +10,21 @@ $(document).ready(function ()
         $("#category_form").submit();
     });
 
+    $("#thread_submit").click(function()
+    {
+        $("#thread_form").submit();
+    });
+
     $(".new_category").click(function()
     {
         var id = $(".new_category").attr('id');
         var pieces = id.split("-");
         $("#category_form").prop('action', mainURL + '/forum/category/' + pieces[2] + '/new');
+    });
+
+    $(".edit_thread").click(function()
+    {
+        $("#thread_form").prop('action', mainURL + '/forum/thread/' + $(this).attr('data-thread-id') + '/edit');
     });
 
     $(".delete_group").click(function(event)
@@ -78,7 +88,7 @@ $(document).ready(function ()
         })
     });
 
-    $(".remove-tag").click(function(event)
+    $(document).on('click', ".remove-tag", function(event)
     {
         $el = $(this);
         $threadtID = $el.attr('data-thread-id');
@@ -92,4 +102,31 @@ $(document).ready(function ()
             }
         })
     });
+
+    $(document).on('click', ".add-tag", function(event)
+    {
+        $(this).siblings('.save-tag').css('display', 'inline-block');
+        $(this).siblings('.new-tag-name').css('display', 'inline-block').focus();
+    });
+
+    $(".save-tag").click(function(event)
+    {
+        $el = $(this);
+        $threadtID = $($el).attr('data-thread-id');
+        $tagName = $($el).siblings('.new-tag-name').val().trim();console.log($threadtID);
+        $.ajax({
+            url: mainURL + '/forum/thread/' + $threadtID + '/tag/' + $tagName + '/add',
+            method: 'get'
+        }).done(function( data, textStatus, jqXHR ) {
+            if (data == 1) {
+                $($el).css('display', 'none');
+                $($el).siblings('.new-tag-name').css('display', 'none');
+                $($el).siblings('.new-tag-name').val('');
+                $newElem = '<div class="tag hvr-back-pulse tag"><a href="' + mainURL + '/forum/tag/' + $tagName + '">' + $tagName + '</a><button class="btn-xs btn-danger remove-tag" data-tag-name="' + $tagName + '" data-thread-id="' + $threadtID + '" title="Remove this Tag">X</button></div>';
+                $($el).siblings('.new-tag-name').before($newElem);
+            }
+        })
+    });
+
+
 });
