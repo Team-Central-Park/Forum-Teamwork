@@ -46,6 +46,12 @@
 
     <div class="container">@yield('content')</div>
 
+    <footer class="footer">
+    	<div class="container">
+    		<p>&#169; 2015 All Rights Reserved by Team Central Park</p>
+		</div>
+    </footer>
+
     @section('javascript')
         <script src="http://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>

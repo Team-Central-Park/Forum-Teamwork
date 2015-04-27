@@ -227,3 +227,14 @@ form {
 .latest-comments:nth-child(even), .latest-threads:nth-child(even) {
 	background-color: white !important;
 }
+.footer {
+	background-color: black;
+	color: white;
+	margin-top: 50px;
+	font-family: Exo;
+	font-size: 14px;
+}
+.footer p {
+	text-align: center;
+	line-height: 100px;
+}
