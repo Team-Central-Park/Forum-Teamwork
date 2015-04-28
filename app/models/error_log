@@ -1,0 +1,6 @@
+[28-Apr-2015 10:22:22 UTC] PHP Fatal error:  Class 'Eloquent' not found in /home/svecloud/public_html/forum/app/models/User.php on line 6
+[28-Apr-2015 10:22:26 UTC] PHP Fatal error:  Class 'Eloquent' not found in /home/svecloud/public_html/forum/app/models/ForumComment.php on line 4
+[28-Apr-2015 10:22:28 UTC] PHP Fatal error:  Class 'Eloquent' not found in /home/svecloud/public_html/forum/app/models/Common.php on line 2
+[28-Apr-2015 10:22:29 UTC] PHP Fatal error:  Class 'Eloquent' not found in /home/svecloud/public_html/forum/app/models/ForumCategory.php on line 4
+[28-Apr-2015 10:22:31 UTC] PHP Fatal error:  Class 'Eloquent' not found in /home/svecloud/public_html/forum/app/models/Tag.php on line 9
+[28-Apr-2015 10:22:33 UTC] PHP Fatal error:  Class 'Eloquent' not found in /home/svecloud/public_html/forum/app/models/ForumThread.php on line 4

@@ -247,6 +247,16 @@ form {
 body > .container {
 	margin-bottom: 100px;
 }
+.panel-body > .list-group > a {
+	font-size: 20px;
+}
+.container > h1, .container > .username-topmenu {
+	color: white;
+	text-shadow: 0 0 10px black;
+}
+.form-control-sm[type="text"] {
+	margin-left: 30px;
+}
 
 @media (max-width: 1000px) and (min-width: 765px){
     .navbar-nav li a {

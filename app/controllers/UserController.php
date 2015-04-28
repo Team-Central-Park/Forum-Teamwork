@@ -30,7 +30,7 @@ class UserController extends BaseController {
             $user->username = Input::get('username');
             $user->password = Hash::make(Input::get('pass1'));
             $user->email = Input::get('email');
-			$user->imageURL = "http://media-cache-ec0.pinimg.com/736x/d4/45/20/d4452035f501e05adf90c63af107bb1a.jpg";
+			$user->imageURL = "http://nashdentalcare.com/wp-content/themes/theme49498/images/empty-avatar.gif";
             if ($user->save())
             {
                 return Redirect::route('home')->with('success', 'You registed successfully. You can now login.');

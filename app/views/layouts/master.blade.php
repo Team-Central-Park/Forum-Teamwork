@@ -42,7 +42,7 @@
                         <li><a href="{{ URL::route('getCreate') }}" class="hvr-fade">Register</a></li>
                         <li><a href="{{ URL::route('getLogin') }}" class="hvr-fade">Login</a></li>
                     @else
-                    	<li><a href="{{ URL::route('getProfile') }}">You are logged as: 
+                    	<li><a href="{{ URL::route('getProfile') }}" class="hvr-fade">You are logged as: 
                     					<span class="username-topmenu">{{ Auth::user()->username }}</span></a></li>
                         <li><a href="{{ URL::route('getLogout') }}" class="hvr-fade">Logout</a></li>
                     @endif

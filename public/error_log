@@ -1,0 +1,2 @@
+[28-Apr-2015 08:30:00 UTC] PHP Fatal error:  Call to a member function withInput() on a non-object in /home/svecloud/public_html/forum/app/controllers/CommentController.php on line 21
+[28-Apr-2015 09:13:05 UTC] PHP Fatal error:  Call to a member function withInput() on a non-object in /home/svecloud/public_html/forum/app/controllers/CommentController.php on line 21
